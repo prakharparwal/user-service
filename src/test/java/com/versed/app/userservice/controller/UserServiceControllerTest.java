@@ -38,7 +38,7 @@ class UserServiceControllerTest {
     @Test
     void shouldReturn200WithAllUsers() throws Exception {
 
-        when(service.getAllUsers()).thenReturn(List.of(new User(1, "Test User")));
+        when(service.getAllUsers()).thenReturn(List.of(new User(1, "Test User", "Test address")));
 
         MvcResult response = mockMvc.perform(MockMvcRequestBuilders
                         .get("/users/all")
@@ -46,6 +46,6 @@ class UserServiceControllerTest {
 
         assertEquals(HttpStatus.OK.value(), response.getResponse().getStatus());
         assertEquals("""
-                [{"id":1,"name":"Test User"}]""", response.getResponse().getContentAsString());
+                [{"id":1,"name":"Test User","address":"Test address"}]""", response.getResponse().getContentAsString());
     }
 }

@@ -5,7 +5,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
-        ddl-auto: create
+        ddl-auto: none
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
   datasource:
@@ -13,6 +13,13 @@ spring:
     driverClassName: org.postgresql.Driver
     username: postgres
     password: password
+
+  liquibase:
+    enabled: true
+    url: jdbc:postgresql://db:5432/postgres
+    user: postgres
+    password: password
+    change-log: db/changelog/db.changelog-master.xml
 
 server:
   port: 7001
